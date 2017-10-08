@@ -17,7 +17,7 @@ import { Component, OnInit } from '@angular/core';
 export class DataComponent {
   forma: FormGroup;
 
-  usuario: Object = {
+  usuario = {
     nombrecompleto: {
       nombre: 'christopher',
       apellido: 'aedo'
@@ -25,6 +25,7 @@ export class DataComponent {
     correo: 'christopher.aedo.p@gmail.com'
     // , pasatiempos: ['correo', 'dormir' , 'comer']
   };
+
 
   constructor() {
     console.log(this.usuario);
@@ -51,11 +52,7 @@ export class DataComponent {
 
     this.forma.controls['password2'].setValidators([Validators.required, this.noIgual.bind( this.forma )]);
 
-    // this.forma.valueChanges
-    //           .subscribe( data => {
-    //             console.log(data);
 
-    //           });
     this.forma.controls['username'].valueChanges.subscribe(data => {
       console.log(data);
     });
@@ -64,21 +61,12 @@ export class DataComponent {
       console.log(data);
     });
 
-
-    // this.forma.setValue(this.usuario);
   }
 
   guardarCambios() {
     console.log(this.forma.value);
     console.log(this.forma);
 
-    // this.forma.reset({
-    //   nombrecompleto: {
-    //     nombre: '',
-    //     apellido: ''
-    //   },
-    //   correo: ''
-    // });
   }
   agregarPasatiempo() {
     (<FormArray>this.forma.controls['pasatiempos']).push(

@@ -18,7 +18,7 @@ export class TemplateComponent {
   nombre: string;
   constructor() {}
 
-  usuario: object = {
+  usuario = {
     nombre: null,
     apellido: null,
     correo: null,

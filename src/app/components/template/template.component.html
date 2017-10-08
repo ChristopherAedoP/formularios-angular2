@@ -1,5 +1,3 @@
-<h4>Formularios <small>template</small></h4>
-<hr>
 <form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="" [ngClass]="{'was-validated': forma.dirty }">
 
 
@@ -8,23 +6,16 @@
     <div class="form-group row ">
       <label class="col-2 col-form-label " [ngClass]="{'text-danger': !nombre.valid && nombre.dirty , 'text-success': nombre.valid && nombre.dirty }">Nombre</label>
       <div class="col-8">
-          <input class="form-control"
-                  type="text"
-                  placeholder="Nombre"
-                  name="nombre"
-                  [(ngModel)]="usuario.nombre"
-                  minlength="3"
-                  required="required"
-                  #nombre="ngModel"
-                  >
-          <div class="invalid-feedback">
-            <div  *ngIf="nombre.errors?.required">
-              Este campo es requerido
-            </div>
-            <div  *ngIf="nombre.errors?.minlength">
-              Un minimo de {{ nombre.errors.minlength?.requiredLength }}  caracteres
-            </div>
+        <input class="form-control" type="text" placeholder="Nombre" name="nombre" [(ngModel)]="usuario.nombre" minlength="3" required="required"
+          #nombre="ngModel">
+        <div class="invalid-feedback">
+          <div *ngIf="nombre.errors?.required">
+            Este campo es requerido
           </div>
+          <div *ngIf="nombre.errors?.minlength">
+            Un minimo de {{ nombre.errors.minlength?.requiredLength }} caracteres
+          </div>
+        </div>
 
       </div>
     </div>
@@ -32,13 +23,8 @@
       <label class="col-2 col-form-label" [ngClass]="{'text-danger': !apellido.valid && apellido.dirty , 'text-success': apellido.valid && apellido.dirty }">Apellido</label>
 
       <div class="col-8">
-        <input class="form-control"
-                type="text"
-                placeholder="Apellido"
-                name="apellido"
-                [(ngModel)]="usuario.apellido"
-                required="required"
-                #apellido="ngModel">
+        <input class="form-control" type="text" placeholder="Apellido" name="apellido" [(ngModel)]="usuario.apellido" required="required"
+          #apellido="ngModel">
 
         <div class="invalid-feedback">
           <div *ngIf="apellido.errors?.required">Este campo es requerido</div>
@@ -49,14 +35,8 @@
   <div class="form-group row">
     <label class="col-2 col-form-label" [ngClass]="{'text-danger': !correo.valid && correo.dirty , 'text-success': correo.valid && correo.dirty }">Correo</label>
     <div class="col-md-8">
-      <input class="form-control"
-              type="email"
-              placeholder="Correo electrónico"
-              name="email"
-              [(ngModel)]="usuario.correo"
-              required="required"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-              #correo="ngModel">
+      <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [(ngModel)]="usuario.correo" required="required"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #correo="ngModel">
 
       <div class="invalid-feedback">
 
@@ -67,36 +47,28 @@
   </div>
 
 
-    <div class="form-group row">
-      <label class="col-2 col-form-label" > Pais      </label>
-      <div class="col-md-8">
-        <select [(ngModel)]="usuario.pais"
-                class="form-control"
-                name="pais" >
+  <div class="form-group row">
+    <label class="col-2 col-form-label"> Pais </label>
+    <div class="col-md-8">
+      <select [(ngModel)]="usuario.pais" class="form-control" name="pais">
 
-              <option value="">Seleccione un pais</option>
-              <option *ngFor="let pais of paises"
-                    [value]="pais.codigo"> {{ pais.nombre }} </option>
-        </select>
-      </div>
+        <option value="">Seleccione un pais</option>
+        <option *ngFor="let pais of paises" [value]="pais.codigo"> {{ pais.nombre }} </option>
+      </select>
     </div>
+  </div>
 
-    <div class="form-group row">
-      <label class="col-2 col-form-label"> Sexo      </label>
-      <div class="col-md-8">
+  <div class="form-group row">
+    <label class="col-2 col-form-label"> Sexo </label>
+    <div class="col-md-8">
 
-        <label *ngFor="let s of sexos"
-              class="custom-control custom-radio">
-        <input [(ngModel)]="usuario.sexo"
-            name="sexo"
-            type="radio"
-            class="custom-control-input"
-            [value] = "s">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">{{ s }}</span>
-        </label>
+      <label *ngFor="let s of sexos" class="custom-control custom-radio">
+        <input [(ngModel)]="usuario.sexo" name="sexo" type="radio" class="custom-control-input" [value]="s">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">{{ s }}</span>
+      </label>
 
-        <!-- <label class="custom-control custom-radio">
+      <!-- <label class="custom-control custom-radio">
         <input [(ngModel)]="usuario.sexo"
             name="sexo"
             type="radio"
@@ -106,23 +78,19 @@
           <span class="custom-control-description">Femenino</span>
         </label> -->
 
-      </div>
     </div>
-
-<div class="form-group row">
-  <label class="col-2 col-form-label"> Acepta </label>
-  <div class="col-md-8">
-    <label class="custom-control custom-checkbox">
-      <input [(ngModel)]="usuario.acepta"
-          name="acepta"
-          type="checkbox"
-          class="custom-control-input"
-          required>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Acepta las conficiones</span>
-    </label>
   </div>
-</div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label"> Acepta </label>
+    <div class="col-md-8">
+      <label class="custom-control custom-checkbox">
+        <input [(ngModel)]="usuario.acepta" name="acepta" type="checkbox" class="custom-control-input" required>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Acepta las conficiones</span>
+      </label>
+    </div>
+  </div>
 
 
 
@@ -134,10 +102,7 @@
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
 
-      <button
-            [disabled]="!forma.valid"
-            type="submit"
-            class="btn btn-outline-primary">
+      <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary">
         Guardar
       </button>
     </div>
@@ -147,4 +112,3 @@
 <pre>
   {{usuario | json }}
 </pre>
-
